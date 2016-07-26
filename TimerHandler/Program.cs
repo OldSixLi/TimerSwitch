@@ -1,4 +1,4 @@
-﻿/**************************************************************************************************
+﻿/************************************************************************************
  * 描述：
  *      定时任务管理
  *       在系统中，主要分为两大部分：操作的事件（Operate）以及定时执行的任务（Mission）
@@ -6,7 +6,7 @@
  *       任务为管理员设置定时执行的标准
  * 变更历史：
  *      作者：马少博  时间：2016年7月20日13:41:02    新建 
-**************************************************************************************************/
+**************************************************************************************/
 using System;
 using System.Collections.Specialized;
 using System.Threading;
@@ -45,7 +45,7 @@ namespace TimerHandler
 
             #region 例子1（简单使用）
 
-            IJobDetail job1 = JobBuilder.Create<TimerClass.Operate.OperateSql>()  //创建一个作业
+            IJobDetail job1 = JobBuilder.Create<TimerClass.Job.SqlOperateJob>()  //创建一个作业
                 .WithIdentity("作业名称" , "作业组")
                 .Build();
             ITrigger trigger1 = TriggerBuilder
@@ -61,14 +61,14 @@ namespace TimerHandler
 
             #region 例子2 (执行时 作业数据传递，时间表达式使用）
 
-            IJobDetail job2 = JobBuilder.Create<TimerClass.Operate.OperateHandler>()
+            IJobDetail job2 = JobBuilder.Create<TimerClass.Job.HandlerJob>()
                                         .WithIdentity("myJob" , "group1")
                                         .UsingJobData("jobSays" , "在此处执行一些普通的事物操作")
                                         .Build();
             ITrigger trigger2 = TriggerBuilder.Create()
                                         .WithIdentity("mytrigger" , "group1")
                                         .StartNow()
-                                        .WithCronSchedule("/10 * * ? * *")//时间调度表达式每整十秒执行一次
+                                        .WithCronSchedule("/3 * * ? * *")//时间调度表达式每整十秒执行一次
                                         .Build();
             scheduler.ScheduleJob(job2 , trigger2);
             #endregion
@@ -79,20 +79,17 @@ namespace TimerHandler
 
             MissionControl control = new MissionControl();
 
-            //control.AddScheduleJob("111111111组！" , "好啊1");
-            //control.AddScheduleJob("222222222组！" , "好啊2");
-            //control.AddScheduleJob("333333333组！" , "好啊3");
-            //control.AddScheduleJob("444444444组！" , "好啊4");
+            string sqlstr = "insert into TimerTests  values('成功',getdate())";
 
+            //使用时间调度表达式
+            //control.AddSqlExecuteJob(sqlstr , DateTime.Now.AddSeconds(1) , DateTime.Now.AddSeconds(10) , "group1" , "mission1" , "/3 * * ? * *");
 
-            //control.AddScheduleJob("1组", "2任务", "insert into TimerTests  values('success',getdate())");
-            //new MissionControl().PauseJob("222222222组！" , "好啊2");
+            //使用间隔时间，循环次数
+            control.AddSqlExecuteJob(sqlstr , DateTime.Now.AddSeconds(1) , DateTime.Now.AddSeconds(100) , "group1" , "mission2" , 3 , 10);
+
+            control.PauseJob("group1", "mission2");
             #endregion
-            
-            Thread.Sleep(20000);
-            //new MissionControl().ReStart("222222222组！" , "好啊2");
-
-            scheduler.Shutdown(true);//关闭调度器。
+            //scheduler.Shutdown(true);//关闭调度器。
             Console.ReadLine();
 
         }

@@ -52,8 +52,9 @@
     <Compile Include="DAL\DataAccess.cs" />
     <Compile Include="DAL\DbHelper.cs" />
     <Compile Include="Missions\MissionControl.cs" />
-    <Compile Include="Operate\OperateHandler.cs" />
-    <Compile Include="Operate\OperateSql.cs" />
+    <Compile Include="Job\HandlerJob.cs" />
+    <Compile Include="Job\SqlOperateJob.cs" />
+    <Compile Include="Job\SendMailJob.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
