@@ -6,7 +6,7 @@
 ***********************************************************************/
 using System;
 using Quartz;
-using TimerClass.DAL;
+using  DAL;
 
 namespace TimerClass.Job
 {

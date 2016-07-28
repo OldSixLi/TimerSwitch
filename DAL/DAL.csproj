@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A0206AF6-433D-4BE2-86DA-4FB429CA7660}</ProjectGuid>
+    <ProjectGuid>{82899CBB-A34B-4AAD-ADEC-89D9DB2CA3A2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TimerClass</RootNamespace>
-    <AssemblyName>TimerClass</AssemblyName>
+    <RootNamespace>DAL</RootNamespace>
+    <AssemblyName>DAL</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,17 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Common.Logging">
-      <HintPath>..\TimerHandler\bin\release\Quartz\Common.Logging.dll</HintPath>
-    </Reference>
-    <Reference Include="Common.Logging.Core">
-      <HintPath>..\TimerHandler\bin\release\Quartz\Common.Logging.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Quartz">
-      <HintPath>..\TimerHandler\bin\release\Quartz\Quartz.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -49,21 +39,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Missions\MissionControl.cs" />
-    <Compile Include="Job\HandlerJob.cs" />
-    <Compile Include="Job\SqlOperateJob.cs" />
-    <Compile Include="Job\SendMailJob.cs" />
+    <Compile Include="DataAccess.cs" />
+    <Compile Include="DbHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TimerMission.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BLL\BLL.csproj">
-      <Project>{daf2d406-628c-4ef6-8e34-fc5f85f5f695}</Project>
-      <Name>BLL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DAL\DAL.csproj">
-      <Project>{82899cbb-a34b-4aad-adec-89d9db2ca3a2}</Project>
-      <Name>DAL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{fec41e6d-2cbc-4f74-b961-bb418b20f4b1}</Project>
       <Name>Model</Name>

@@ -157,11 +157,20 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{daf2d406-628c-4ef6-8e34-fc5f85f5f695}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{fec41e6d-2cbc-4f74-b961-bb418b20f4b1}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TimerClass\TimerClass.csproj">
       <Project>{a0206af6-433d-4be2-86da-4fb429ca7660}</Project>
       <Name>TimerClass</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

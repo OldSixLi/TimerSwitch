@@ -130,6 +130,7 @@ input[type="reset"],
 input[type="submit"] {
   -webkit-appearance: button;
   cursor: pointer;
+    height: 36px;
 }
 button[disabled],
 html input[disabled] {

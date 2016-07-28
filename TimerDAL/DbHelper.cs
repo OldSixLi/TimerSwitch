@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace TimerClass.DAL
+namespace TimerDAL
 {
     /// <summary>
     /// 数据访问类，可用于访问不同数据库
