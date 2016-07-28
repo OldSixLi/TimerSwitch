@@ -1,0 +1,135 @@
+﻿/*for 管理员物品、注册用户表页面*/
+ body {
+     font-family: "MicroSoft YaHei"
+} 
+   .content { }
+  .usericon { }
+.goodsid {
+}
+ .username {
+}
+ .goodsname {
+}
+ .goodsdetail {
+}
+ .ischarge {
+}
+ .firstclass {
+}
+ .secondclass {
+}
+ .price {
+}
+ .address {
+}
+ .time {
+}
+ .phnum {
+}
+ .QQnum {
+}
+         thead td {
+            border-bottom: none;
+        }
+         .no-padding {
+            margin-left: 10px;
+            margin-right: -15px;
+        }
+         .no-padding1 {
+            margin-right: -15px;
+        }
+         .nav > li.disabled > a {
+            color: #337ab7;
+        }
+         .panel-default .panel-heading {
+            background: none repeat scroll 0 0 #fff;
+            border-bottom: 1px solid #eee;
+            color: #5f6468;
+            font-size: 20px;
+            font-weight: 300;
+            height: 66px;
+            letter-spacing: 0.025em;
+            line-height: 45px;
+            -ms-border-top-left-radius: 5px;
+            border-top-left-radius: 5px;
+            -ms-border-top-right-radius: 5px;
+            border-top-right-radius: 5px;
+            padding: 10px 15px;
+        }
+         thead th {
+            background: none repeat scroll 0 0 #f7f7f8;
+            border-color: #ddd;
+            color: #5f6468;
+        }
+         .table > thead > tr > th {
+            border-bottom: 1px solid #e6e7e8;
+            height: 50px;
+            vertical-align: middle;
+        }
+         .fixed-table-container {
+            border: 1px solid #dddddd;
+            -ms-border-radius: 4px;
+            border-radius: 4px;
+            clear: both;
+            position: relative;
+        }
+         .fixed-table-header {
+            -ms-border-radius: 5px 5px 0 0;
+            border-radius: 5px 5px 0 0;
+            overflow: hidden;
+        }
+         .fixed-table-body {
+            height: 100%;
+            overflow: auto;
+        }
+         .fixed-table-toolbar .bars, .fixed-table-toolbar .search, .fixed-table-toolbar .columns {
+            line-height: 34px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            position: relative;
+        }
+         .btn-default, .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default, .btn-default.disabled, .btn-default[disabled], fieldset[disabled] .btn-default, .btn-default.disabled:hover, .btn-default[disabled]:hover, fieldset[disabled] .btn-default:hover, .btn-default.disabled:focus, .btn-default[disabled]:focus, fieldset[disabled] .btn-default:focus, .btn-default.disabled:active, .btn-default[disabled]:active, fieldset[disabled] .btn-default:active, .btn-default.disabled.active, .btn-default.active[disabled], fieldset[disabled] .btn-default.active {
+            background-color: #e9ecf2;
+            border-color: #e9ecf2;
+            color: #1b3548;
+        }
+         .btn-group {
+            margin-left: 15px;
+        }
+             .btn-group .glyphicon {
+                margin: 0;
+            }
+         .pull-right .dropdown-menu {
+            left: auto;
+            right: 0;
+        }
+         .margin-left {
+            margin-left: 20px;
+        }
+         .ddl {
+            height: 28px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            -ms-border-radius: 4px;
+            border-radius: 4px;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+            -ms-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+            -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+            -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+            -moz-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+            -ms-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        }
+ .ddl:focus {
+    border-color: #66afe9;
+                outline: 0;
+                -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+    -ms-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+}
+ 

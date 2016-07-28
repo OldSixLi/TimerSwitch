@@ -1,0 +1,102 @@
+﻿
+body {
+    background-color: white;
+} .childrenul li {
+    line-height: 40px;
+    display: block;
+    margin-left: 15px;
+} a {
+    outline: none;
+} li {
+    outline: none;
+} .panel-widget {
+    background: none repeat scroll 0 0 #fff;
+} .widget-right .text-muted {
+    color: #9fadbb;
+} .large {
+    font-size: 2em;
+    color: #5f6468;
+} .panel-blue {
+    background: none repeat scroll 0 0 #30a5ff;
+    color: #fff;
+} .panel-orange {
+    background: none repeat scroll 0 0#ffb53e;
+    color: #fff;
+} .panel-teal {
+    background: none repeat scroll 0 0 #1ebfae;
+    color: #fff;
+} .panel-red {
+    background: none repeat scroll 0 0 #f9243f;
+    color: #fff;
+} .no-padding {
+    margin: 0;
+    padding: 0;
+} .widget-left {
+    -ms-border-bottom-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    -ms-border-top-left-radius: 4px;
+    border-top-left-radius: 4px;
+    height: 80px;
+    padding-top: 15px;
+    text-align: center;
+} .widget-right {
+    background: none repeat scroll 0 0 #fff;
+    -ms-border-bottom-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    -ms-border-top-right-radius: 4px;
+    border-top-right-radius: 4px;
+    color: #999;
+    font-weight: 300;
+    height: 80px;
+    line-height: 1.6em;
+    margin: 0;
+    padding: 20px;
+    text-align: left;
+} .chat .panel {
+    border: none;
+} .glyphiconmargin {
+    margin-left: 10px;
+    margin-right: 15px;
+} .text-muted {
+    color: #9fadbb;
+} p {
+    color: #777777;
+} .chat .panel-heading {
+    font-size: 18px;
+    font-weight: 300;
+    height: 66px;
+    letter-spacing: 0.025em;
+    line-height: 45px;
+} .chat .panel-body {
+    height: 400px;
+    overflow-y: scroll;
+} .chat ul li {
+    border-bottom: 1px solid #eeeeee;
+    margin-bottom: 10px;
+    padding: 15px 5px;
+} .chat ul {
+    list-style: outside none none;
+    margin-left: -35px;
+}     .chat ul li.left .chat-body {
+        margin-left: 80px;
+        margin-top: -20px;
+    }     .chat ul li.right .chat-body {
+        margin-right: 100px;
+    } .primary-font {
+} .chat-img {
+} .goodsheader {
+    font-size: 20px;
+    float: right;
+    margin-right: 10px;
+} .td1 {
+    width: 100px;
+} .intro {
+    margin-top: 30px;
+    width: 300px;
+} table td {
+    padding: 10px 0;
+} .back {
+    padding: 10px;
+} .p_comment {
+    margin-top: 5px;
+}

@@ -1,0 +1,48 @@
+﻿/*For 发布物品页面*/
+ body {
+}
+ * {
+    font-family: Microsoft YaHei;
+    font-size: 15px;
+}
+ .jumbotron {
+    font-family: Microsoft YaHei;
+    background: #f06;
+    background: linear-gradient(8deg, #006666, #00CC99);
+    min-height: 100%;
+    color: white;
+    text-align: center;
+}
+.jumbotron {
+    font-family: Microsoft YaHei;
+    background: #009999;
+    background: linear-gradient(8deg, #006666, #00CC99);
+    min-height: 100%;
+    color: white;   margin-bottom: 10px;
+}
+.control-label {
+    font-size: 15px;
+    font-weight: 100;
+}
+ .spantextt {
+    font-size: 15px;
+}
+ .spantext {
+    color: #777777;
+    font-family: Microsoft YaHei;
+    font-size: 15px;
+    margin-bottom: 0;
+}
+ hr {
+    margin-top: 0;
+}
+ a {
+    cursor: pointer;
+}
+            .helpers {
+            color: #00ad90;
+            font-family: impact;
+            font-size: 3.17em;
+            line-height: 155px;
+            vertical-align: middle;
+        }

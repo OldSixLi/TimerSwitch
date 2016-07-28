@@ -1,0 +1,108 @@
+﻿/*for 模板页*/
+ body {
+}
+ .container1 {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+ .glyphicon-yen {
+    font-size: 13px;
+}
+ a {
+    color: #777;
+}
+ .navbar-inverse {
+    -ms-opacity: 0.8;
+    opacity: 0.8;
+    width: 100%;
+}
+ .home-banner {
+    background-image: url("/Images/hero.jpg");
+    color: #fff;
+    margin-top: -81px;
+    position: relative;
+    text-align: center;
+}
+ .text {
+    text-align: center;
+    color: #777777;
+    font-family: Microsoft YaHei;
+    font-size: 22px;
+}
+ .spantext {
+    color: #777777;
+    font-family: Microsoft YaHei;
+    font-size: 15px;
+    margin: 3px;
+}
+ .pad {
+    margin: 3px;
+    padding: 3px;
+}
+ .img {
+    max-width: 100%;
+    height: auto;
+}
+ .divimg {
+    overflow: hidden;
+}
+ .transparent {
+    background: rgba(255, 255, 255, 0) !important;
+    -webkit-filter: Alpha(opacity=0);
+    -moz-filter: Alpha(opacity=0);
+    -o-filter: Alpha(opacity=0);
+    filter: Alpha(opacity=0);
+    background: #fff; /*　使用IE专属滤镜实现IE背景透明*/
+}
+ #panelunregist {
+    position: relative;
+}
+ .navbar-inverse {
+    background-color: #222;
+    border-color: transparent;
+}
+    .glyphicon-remove {
+            font-size: 17px;
+        }
+         .glyphicon-remove {
+            color: red;
+        }
+         .divglyphicon {
+            margin: 7px 0;
+            padding: 0;
+        }
+         a:focus {
+            outline: none;
+        }
+         footer {
+            background: #f7faf9 url("../Images/footer-bg.png") no-repeat scroll center bottom;
+            padding: 0 0 20px;
+        }
+         .footer {
+            border-top: 1px solid #e5e5e5;
+            color: #777;
+            margin-top: 70px;
+            padding: 30px 0;
+            font-family: Microsoft YaHei;
+        }
+         .row {
+            margin-left: -15px;
+            margin-right: -15px;
+        }
+         .footer-bottom {
+            font-size: 13px;
+        }
+         .footer-top .about > div h4 {
+            color: #563d7c;
+            font-size: 16px;
+        }
+               .helpers {
+            color: #00ad90;
+            font-family: impact;
+            font-size: 3.17em;
+            line-height: 155px;
+            vertical-align: middle;
+        }
+

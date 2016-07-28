@@ -754,11 +754,19 @@ namespace TimerClass.DAL
         }
         public static DataSet GetDS(string cmdText, params SqlParameter[] cmdParas)//必须有参数
         {
+            
             SqlConnection conn = new SqlConnection(connectionString);
             //CommandType cmdType = CommandType.Text;
             return GetDS(conn, CommandType.Text, cmdText, cmdParas);
         }
 
+
+        public static DataSet GetDSer(string cmdText , params SqlParameter[] cmdParas)//必须有参数
+        {
+            SqlConnection conn = new SqlConnection(connectionString);
+            //CommandType cmdType = CommandType.Text;
+            return GetDS(conn , CommandType.StoredProcedure , cmdText , cmdParas);
+        }
         /// <summary>
         /// 自老系统
         /// 返回datatable
