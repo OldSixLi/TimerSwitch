@@ -25,7 +25,7 @@ namespace TimerManage
         /// <summary>
         /// 副处级
         /// </summary>
-        [EnumDescription("show" , "删除")]
+        [EnumDescription("show" , "已停止")]
         FuChu = 4 ,
     }
 

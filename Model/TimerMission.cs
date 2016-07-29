@@ -31,6 +31,7 @@ namespace  Model
 		private string _groupname;
 		private string _sqlstr;
 		private string _timecorn;
+        private string _statestring;
 		private int? _repeatcount;
 		private int? _inveraltime;
 		private DateTime? _starttime;
@@ -54,6 +55,14 @@ namespace  Model
 		{
 			set{ _missionname=value;}
 			get{return _missionname;}
+		}
+        /// <summary>
+        /// 任务状态  （文本）
+        /// </summary>
+            public string StateString
+		{
+            set { _statestring = value; }
+            get { return _statestring; }
 		}
 		/// <summary>
 		/// 组名称

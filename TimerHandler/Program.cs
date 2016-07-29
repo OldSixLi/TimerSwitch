@@ -87,7 +87,7 @@ namespace TimerHandler
             //使用间隔时间，循环次数
             control.AddSqlExecuteJob(sqlstr , DateTime.Now.AddSeconds(1) , DateTime.Now.AddSeconds(100) , "group1" , "mission2" , 3 , 10);
 
-            control.PauseJob("group1", "mission2");
+            //control.PauseJob("group1", "mission2");
             #endregion
             //scheduler.Shutdown(true);//关闭调度器。
             Console.ReadLine();

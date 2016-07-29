@@ -22,15 +22,6 @@ namespace TimerManage {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// btnMissionAdd 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMissionAdd;
-        
-        /// <summary>
         /// txtAddMissionName 控件。
         /// </summary>
         /// <remarks>
@@ -103,13 +94,22 @@ namespace TimerManage {
         protected global::System.Web.UI.WebControls.TextBox txtAddMissionExplain;
         
         /// <summary>
-        /// btnRegist 控件。
+        /// btnRegists 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRegist;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor btnRegists;
+        
+        /// <summary>
+        /// btnMissionBeginNows 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor btnMissionBeginNows;
         
         /// <summary>
         /// txtMissionName 控件。
@@ -173,5 +173,14 @@ namespace TimerManage {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater Repeatergoods;
+        
+        /// <summary>
+        /// txtHiddenText 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtHiddenText;
     }
 }

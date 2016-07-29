@@ -90,6 +90,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Ajax\GetMissionDetail.ashx" />
+    <Content Include="log4net.config" />
+    <Content Include="quartz.config" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -118,9 +121,13 @@
     <Content Include="style\styles-mu.css" />
     <Content Include="Web.config" />
     <Content Include="MissionAdd.aspx" />
+    <Content Include="quartz_jobs.xml" />
     <Content Include="数据库建立表脚本\TimerMission.sql" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ajax\GetMissionDetail.ashx.cs">
+      <DependentUpon>GetMissionDetail.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Control.aspx.cs">
       <DependentUpon>Control.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
