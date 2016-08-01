@@ -19,7 +19,7 @@ namespace DAL
             string sql = @" insert into TimerTests  values('success',getdate())";
             return DbHelper.ExecuteSql(sql) > 0;
         }
-        
+
         public bool SqlExecute(string sql)
         {
             return DbHelper.ExecuteSql(sql) > 0;
@@ -39,7 +39,7 @@ namespace DAL
         /// <param name="totalrecord">总记录数</param>
         /// <returns></returns>
         // TODO  修改用户名称不同步的BUG
-        public DataTable GetAllData(string orderby , int sort , int page , int pageindex , ref int totalpage , ref int index , ref int totalrecord)
+        public DataTable GetAllData(Model.TimerMission model , string orderby , int sort , int page , int pageindex , ref int totalpage , ref int index , ref int totalrecord)
         {
             SqlParameter[] paras =
             {
@@ -53,12 +53,37 @@ namespace DAL
                 new SqlParameter("@TotalPage ",SqlDbType.Int,40), 
                 new SqlParameter("@TotalRecord ",SqlDbType.Int,40)
              };
+
+
+            string condition = " 1=1 and IsDel = 0";
+
+            if(!string.IsNullOrEmpty(model.MissionName) && model.MissionName != "")
+            {
+                condition += " and MissionName like '%" + model.MissionName + "%'";
+            }
+            if(!string.IsNullOrEmpty(model.GroupName) && model.GroupName != "")
+            {
+                condition += " and GroupName='" + model.GroupName + "'";
+            }
+            if(model.MissionState != 0)
+            {
+                condition += "  and MissionState ='" + model.MissionState + "'";
+            }
+            if(!string.IsNullOrEmpty(model.StartTime.ToString()) && model.StartTime.ToString() != "")
+            {
+                condition += "  and CreateTime >='" + model.StartTime + "'";
+            }
+
+            if(!string.IsNullOrEmpty(model.EndTime.ToString()) && model.EndTime.ToString() != "")
+            {
+                condition += "  and CreateTime <='" + model.EndTime + "'";
+            }
             //表名(支持多表)
             paras[0].Value = @"TimerMission";
             //字段名(全部字段为*)
             paras[1].Value = "*";
             //条件语句(不用加where)
-            paras[2].Value = "IsDel=0";
+            paras[2].Value = condition;
             // 排序字段
             paras[3].Value = orderby;
             //排序方法，0为升序，1为降序
@@ -87,7 +112,7 @@ namespace DAL
                 return null;
             }
         }
-        
+
 
     }
 }

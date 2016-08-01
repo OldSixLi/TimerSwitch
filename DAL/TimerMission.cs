@@ -1,19 +1,4 @@
-﻿/**  版本信息模板在安装目录下，可自行修改。
-* TimerMission.cs
-*
-* 功 能： N/A
-* 类 名： TimerMission
-*
-* Ver    变更日期             负责人  变更内容
-* ───────────────────────────────────
-* V0.01  2016/7/28 15:36:40   N/A    初版
-*
-* Copyright (c) 2012 Maticsoft Corporation. All rights reserved.
-*┌──────────────────────────────────┐
-*│　此技术信息为本公司机密信息，未经本公司书面同意禁止向第三方披露．　│
-*│　版权所有：动软卓越（北京）科技有限公司　　　　　　　　　　　　　　│
-*└──────────────────────────────────┘
-*/
+﻿
 using System;
 using System.Data;
 using System.Text;
@@ -48,7 +33,7 @@ namespace DAL
         /// <summary>
         /// 增加一条数据
         /// </summary>
-        public bool Add(Model.TimerMission model)
+        public int Add(Model.TimerMission model)
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("insert into TimerMission(");
@@ -84,15 +69,10 @@ namespace DAL
             parameters[12].Value = model.IsDel;
 
             int rows = DbHelper.ExecuteSql(strSql.ToString() , parameters);
-            if(rows > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+
+            return rows;
         }
+
         /// <summary>
         /// 更新一条数据
         /// </summary>
@@ -400,6 +380,16 @@ namespace DAL
         {
             string sql = "select * from TimerMission where MissionName='" + missionName + "' and  GroupName='" + groupname +
                          "'";
+
+            DataSet ds = DbHelper.GetDS(sql);
+            return ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0;
+        }
+
+
+        public bool TestRepeat(string missionName , string groupname , string id)
+        {
+            string sql = "select * from TimerMission where MissionName='" + missionName + "' and  GroupName='" + groupname +
+                         "' and id!='" + id + "'";
 
             DataSet ds = DbHelper.GetDS(sql);
             return ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0;

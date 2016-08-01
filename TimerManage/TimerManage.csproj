@@ -100,6 +100,7 @@
     <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
     <Content Include="Scripts\jquery.datetimepicker.full.min.js" />
     <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\MissionManageScript.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\npm.js" />
     <Content Include="Scripts\UILogic.js" />
@@ -117,6 +118,7 @@
     <Content Include="style\jquery.datetimepicker.css" />
     <Content Include="style\main.css" />
     <Content Include="style\master.css" />
+    <Content Include="style\MissionManageStyle.css" />
     <Content Include="style\publish.css" />
     <Content Include="style\styles-mu.css" />
     <Content Include="Web.config" />
