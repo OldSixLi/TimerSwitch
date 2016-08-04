@@ -83,7 +83,6 @@
     <Content Include="Scripts\bootstrap-switch.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\highlight.js" />
     <Content Include="Scripts\jquery-1.11.1.min.js" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -93,7 +92,6 @@
     <Content Include="Ajax\GetMissionDetail.ashx" />
     <Content Include="log4net.config" />
     <Content Include="quartz.config" />
-    <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
@@ -101,24 +99,23 @@
     <Content Include="Scripts\jquery.datetimepicker.full.min.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\MissionManageScript.js" />
+    <Content Include="Scripts\MissionManageScript.min.js">
+      <DependentUpon>MissionManageScript.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\npm.js" />
-    <Content Include="Scripts\UILogic.js" />
-    <None Include="Scripts\_references.js" />
-    <Content Include="style\admin.css" />
-    <Content Include="style\admingoods.css" />
+    <Content Include="Scripts\MissionManageScript.min.js.map">
+      <DependentUpon>MissionManageScript.min.js</DependentUpon>
+    </Content>
     <Content Include="style\bootstrap-switch.min.css" />
     <Content Include="style\bootstrap-theme.css" />
     <Content Include="style\bootstrap-theme.min.css" />
     <Content Include="style\bootstrap.css" />
     <Content Include="style\bootstrap.min.3.32.css" />
-    <Content Include="style\datepicker3.css" />
-    <Content Include="style\highlight.css" />
-    <Content Include="style\introducegoods.css" />
     <Content Include="style\jquery.datetimepicker.css" />
-    <Content Include="style\main.css" />
-    <Content Include="style\master.css" />
     <Content Include="style\MissionManageStyle.css" />
+    <Content Include="style\MissionManageStyle.min.css">
+      <DependentUpon>MissionManageStyle.css</DependentUpon>
+    </Content>
     <Content Include="style\publish.css" />
     <Content Include="style\styles-mu.css" />
     <Content Include="Web.config" />
