@@ -16,11 +16,8 @@
     <script src="Scripts/jquery-1.11.1.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
     <script src="Scripts/jquery.datetimepicker.full.min.js"></script>
-    <script src="Scripts/MissionManageScript.js"></script>
-    <script>
-        
-
-    </script>
+    <script src="Scripts/MissionManageScript.min.js"></script>
+    
 </head>
 <body>
     <form id="form1" runat="server">
