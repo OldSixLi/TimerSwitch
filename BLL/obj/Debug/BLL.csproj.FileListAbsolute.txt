@@ -1,0 +1,9 @@
+E:\代码资源模块\TimerSwitch\BLL\bin\Debug\BLL.dll
+E:\代码资源模块\TimerSwitch\BLL\bin\Debug\BLL.pdb
+E:\代码资源模块\TimerSwitch\BLL\bin\Debug\DAL.dll
+E:\代码资源模块\TimerSwitch\BLL\bin\Debug\Model.dll
+E:\代码资源模块\TimerSwitch\BLL\bin\Debug\DAL.pdb
+E:\代码资源模块\TimerSwitch\BLL\bin\Debug\Model.pdb
+E:\代码资源模块\TimerSwitch\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+E:\代码资源模块\TimerSwitch\BLL\obj\Debug\BLL.dll
+E:\代码资源模块\TimerSwitch\BLL\obj\Debug\BLL.pdb

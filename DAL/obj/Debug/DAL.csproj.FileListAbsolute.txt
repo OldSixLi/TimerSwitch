@@ -1,0 +1,7 @@
+E:\代码资源模块\TimerSwitch\DAL\bin\Debug\DAL.dll
+E:\代码资源模块\TimerSwitch\DAL\bin\Debug\DAL.pdb
+E:\代码资源模块\TimerSwitch\DAL\bin\Debug\Model.dll
+E:\代码资源模块\TimerSwitch\DAL\bin\Debug\Model.pdb
+E:\代码资源模块\TimerSwitch\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+E:\代码资源模块\TimerSwitch\DAL\obj\Debug\DAL.dll
+E:\代码资源模块\TimerSwitch\DAL\obj\Debug\DAL.pdb

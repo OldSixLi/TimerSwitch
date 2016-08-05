@@ -1,0 +1,16 @@
+E:\代码资源模块\TimerSwitch\TimerClass\bin\Debug\TimerClass.dll
+E:\代码资源模块\TimerSwitch\TimerClass\bin\Debug\TimerClass.pdb
+E:\代码资源模块\TimerSwitch\TimerClass\bin\Debug\BLL.dll
+E:\代码资源模块\TimerSwitch\TimerClass\bin\Debug\Common.Logging.Core.dll
+E:\代码资源模块\TimerSwitch\TimerClass\bin\Debug\Common.Logging.dll
+E:\代码资源模块\TimerSwitch\TimerClass\bin\Debug\DAL.dll
+E:\代码资源模块\TimerSwitch\TimerClass\bin\Debug\Model.dll
+E:\代码资源模块\TimerSwitch\TimerClass\bin\Debug\Quartz.dll
+E:\代码资源模块\TimerSwitch\TimerClass\bin\Debug\BLL.pdb
+E:\代码资源模块\TimerSwitch\TimerClass\bin\Debug\DAL.pdb
+E:\代码资源模块\TimerSwitch\TimerClass\bin\Debug\Model.pdb
+E:\代码资源模块\TimerSwitch\TimerClass\bin\Debug\Quartz.pdb
+E:\代码资源模块\TimerSwitch\TimerClass\bin\Debug\Quartz.xml
+E:\代码资源模块\TimerSwitch\TimerClass\obj\Debug\TimerClass.csprojResolveAssemblyReference.cache
+E:\代码资源模块\TimerSwitch\TimerClass\obj\Debug\TimerClass.dll
+E:\代码资源模块\TimerSwitch\TimerClass\obj\Debug\TimerClass.pdb
