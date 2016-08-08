@@ -36,6 +36,15 @@
     <Reference Include="Common.Logging.Core">
       <HintPath>..\TimerHandler\bin\release\Quartz\Common.Logging.Core.dll</HintPath>
     </Reference>
+    <Reference Include="CrystalQuartz.Web">
+      <HintPath>..\packages\CrystalQuartz.Remote.4.0.0.0\lib\CrystalQuartz.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Ivony.Core">
+      <HintPath>D:\公司代码\天津市科技型中小企业服务网2013\V1.X\V1.0\科服网自定义页面\CST.App.CustomizePage.UI\bin\Ivony.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>D:\公司代码\天津市科技型中小企业服务网2013\V1.X\V1.2\科服网自定义页面\libraries\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Quartz">
       <HintPath>..\TimerHandler\bin\release\Quartz\Quartz.dll</HintPath>
     </Reference>

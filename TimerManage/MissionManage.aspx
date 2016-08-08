@@ -101,7 +101,7 @@
                         <div class="col-lg-10  col-lg-offset-1 column mission_operate" style="float: none">
                             <div class="btn-group btn-group-justified" role="group">
 
-                                <a href="#" runat="server" class="btn btn-primary missionstate1 missionstate4  " onserverclick="btnAddJob_Click">
+                                <a href="#" runat="server" class="btn btn-primary missionstate1 missionstate4  missionstate3" onserverclick="btnAddJob_Click">
                                     <i class="glyphicon glyphicon-ok-sign"></i>
                                     执行任务
                                 </a>

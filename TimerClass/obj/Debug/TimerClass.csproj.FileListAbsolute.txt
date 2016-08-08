@@ -14,3 +14,8 @@ E:\代码资源模块\TimerSwitch\TimerClass\bin\Debug\Quartz.xml
 E:\代码资源模块\TimerSwitch\TimerClass\obj\Debug\TimerClass.csprojResolveAssemblyReference.cache
 E:\代码资源模块\TimerSwitch\TimerClass\obj\Debug\TimerClass.dll
 E:\代码资源模块\TimerSwitch\TimerClass\obj\Debug\TimerClass.pdb
+E:\代码资源模块\TimerSwitch\TimerClass\bin\Debug\CrystalQuartz.Web.dll
+E:\代码资源模块\TimerSwitch\TimerClass\bin\Debug\Ivony.Core.dll
+E:\代码资源模块\TimerSwitch\TimerClass\bin\Debug\log4net.dll
+E:\代码资源模块\TimerSwitch\TimerClass\bin\Debug\CrystalQuartz.Core.dll
+E:\代码资源模块\TimerSwitch\TimerClass\bin\Debug\Ivony.Core.xml

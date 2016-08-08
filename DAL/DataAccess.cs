@@ -63,7 +63,7 @@ namespace DAL
             }
             if(!string.IsNullOrEmpty(model.GroupName) && model.GroupName != "")
             {
-                condition += " and GroupName='" + model.GroupName + "'";
+                condition += " and GroupName like '%" + model.GroupName + "%'";
             }
             if(model.MissionState != 0)
             {

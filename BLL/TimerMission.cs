@@ -1,9 +1,8 @@
 ﻿
 using System;
 using System.Data;
-using System.Collections.Generic;  
-using DAL;
-using Model;
+using System.Collections.Generic;
+
 namespace BLL
 {
 	/// <summary>
