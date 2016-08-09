@@ -1,10 +1,12 @@
-﻿using System;
+﻿//说明：在操作任务期间需要先停止或删除任务后，在进行数据库的数据操作。避免数据库状态更改后，任务却仍存在于线程中。
+//后期需要操作部分：在页面上添加按钮，需要根据当前数据库中的任务状态，将任务重新添加至进程中，避免因IIS出故障而导致任务不能继续（将除去未运行状态的任务，其他状态的任务都重新添加至进程中并恢复至相应状态）
+
+using System;
 using System.Data;
 using System.Linq;
 using System.Web.UI.WebControls;
 using CST.ProjectFramework.Common.Extension;
 using BLL;
-using Quartz.Util;
 using TimerClass.Missions;
 
 namespace TimerManage
@@ -12,14 +14,13 @@ namespace TimerManage
     public partial class Manage :System.Web.UI.Page
     {
         /// <summary>
-        /// 数据库操作类
+        /// 业务逻辑层
         /// </summary>
         private readonly TimerMission _bll = new TimerMission();
         /// <summary>
         /// 任务操作类
         /// </summary>
         private readonly MissionControl _missionControl = new MissionControl();
-
 
         #region 私有属性
         /// <summary>
@@ -136,7 +137,6 @@ namespace TimerManage
         /// <param name="e"></param>
         protected void btnF5_Click(object sender , EventArgs e)
         {
-
             NewDatabind(Convert.ToInt32(countDDL.SelectedValue));
         }
 
@@ -165,7 +165,6 @@ namespace TimerManage
             string str = AddTimerMission();
         }
 
-
         /// <summary>
         /// 添加任务并立即执行
         /// </summary>
@@ -175,24 +174,21 @@ namespace TimerManage
         {
             try
             {
-
-
                 string str = AddTimerMission();
                 if(str != "")
                 {
-                    string missionid = str;
-                    Model.TimerMission model = _bll.GetModel(new Guid(missionid));
+                    Model.TimerMission model = _bll.GetModel(new Guid(str));
                     bool issuccess = _missionControl.AddSqlExecuteJob(model.SqlStr , Convert.ToDateTime(model.StartTime) , Convert.ToDateTime(model.EndTime) , model.GroupName , model.MissionName , model.TimeCorn);
                     if(issuccess)
                     {
-                        UIHelper.Alert(this , "任务运行成功！");
+                        UiHelper.Alert(this , "任务运行成功！");
                         model.MissionState = 1;
                         _bll.Update(model);//更新数据
 
                     }
                     else
                     {
-                        UIHelper.Alert(this , "操作失败，请重试！");
+                        UiHelper.Alert(this , "操作失败，请重试！");
                     }
 
                     NewDatabind(Convert.ToInt32(countDDL.SelectedValue));
@@ -200,10 +196,12 @@ namespace TimerManage
             }
             catch(Exception)
             {
-                UIHelper.Alert(this , "操作失败，请重试！");
+                UiHelper.Alert(this , "操作失败，请重试！");
                 throw;
             }
         }
+
+
 
         /// <summary>
         /// TimerMission表数据添加
@@ -248,7 +246,7 @@ namespace TimerManage
                 }
                 if(strErr != "")
                 {
-                    UIHelper.Alert(this , strErr);
+                    UiHelper.Alert(this , strErr);
                     return "";
                 }
                 #endregion
@@ -259,7 +257,7 @@ namespace TimerManage
                 if(isrepeat) //判断当前任务名和组名是否重复
                 {
 
-                    UIHelper.Alert(this , "当前已存在重复的任务组名和任务名，请修改后再进行添加！");
+                    UiHelper.Alert(this , "当前已存在重复的任务组名和任务名，请修改后再进行添加！");
                     return "";
                 }
                 else
@@ -280,7 +278,7 @@ namespace TimerManage
                     };
                     //数据添加
                     int issuccess = _bll.Add(model);
-                    UIHelper.Alert(this , issuccess > 0 ? "保存成功！" : "数据添加失败，请校验数据后重试！");
+                    UiHelper.Alert(this , issuccess > 0 ? "保存成功！" : "数据添加失败，请校验数据后重试！");
                     if(issuccess > 0)
                     {
                         //重新进行数据绑定
@@ -310,7 +308,7 @@ namespace TimerManage
             }
             catch(Exception)
             {
-                UIHelper.Alert(this , "未知原因，操作失败！");
+                UiHelper.Alert(this , "未知原因，操作失败！");
                 return "";
                 throw;
             }
@@ -327,6 +325,7 @@ namespace TimerManage
         /// <param name="e"></param>
         protected void btnMissionEdit_Click(object sender , EventArgs e)
         {
+
             string edit = EditTimerMission();
         }
 
@@ -372,7 +371,7 @@ namespace TimerManage
                 }
                 if(strErr != "")
                 {
-                    UIHelper.Alert(this , strErr);
+                    UiHelper.Alert(this , strErr);
                     return "";
                 }
                 #endregion
@@ -384,7 +383,7 @@ namespace TimerManage
                 var isrepeat = _bll.TestRepeat(missionName , groupName , model.ID.ToString());
                 if(isrepeat) //判断当前任务名和组名是否重复
                 {
-                    UIHelper.Alert(this , "当前已存在重复的任务组名和任务名，请修改名称后再进行操作！");
+                    UiHelper.Alert(this , "当前已存在重复的任务组名和任务名，请修改名称后再进行操作！");
                     return "";
                 }
                 else
@@ -402,7 +401,7 @@ namespace TimerManage
                     model.MissionState = 2;//默认设置当前的MissionState为空
                     //数据添加
                     bool issuccess = _bll.Update(model);
-                    UIHelper.Alert(this , issuccess ? "修改任务成功，当前任务状态恢复为未执行状态！" : "数据添加失败，请校验数据后重试！");
+                    UiHelper.Alert(this , issuccess ? "修改任务成功，当前任务状态恢复为未执行状态！" : "数据添加失败，请校验数据后重试！");
                     if(issuccess)
                     {
                         //重新进行数据绑定
@@ -418,30 +417,82 @@ namespace TimerManage
             }
             catch
             {
-                UIHelper.Alert(this , "未知原因，操作失败！");
+                UiHelper.Alert(this , "未知原因，操作失败！");
                 return "";
             }
         }
 
+        /// <summary>
+        /// 修改任务并立即执行
+        /// 操作步骤：先将当前进程中任务删除，然后再重新添加到进程中
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnEditMissionBeginNow_Click(object sender , EventArgs e)
+        {
+            try
+            {
+                string missionid = EditTimerMission();
+                if(missionid != "")
+                {
+                    Model.TimerMission model = _bll.GetModel(new Guid(missionid));
+                    _missionControl.DeleteJob(model.GroupName , model.MissionName);
+                    bool issuccess = _missionControl.AddSqlExecuteJob(model.SqlStr , Convert.ToDateTime(model.StartTime) ,
+                        Convert.ToDateTime(model.EndTime) , model.GroupName , model.MissionName , model.TimeCorn);
+                    if(issuccess)
+                    {
+                        UiHelper.Alert(this , "修改任务成功，当前任务已开启！");
+                        model.MissionState = 1;
+                        _bll.Update(model); //更新数据
+                    }
+                    else
+                    {
+                        UiHelper.Alert(this , "操作失败，请重试！");
+
+                    }
+                }
+                else
+                {
+                    UiHelper.Alert(this , "操作失败，请重试！");
+                }
+
+            }
+            catch(Exception)
+            {
+                UiHelper.Alert(this , "操作失败，未知错误！");
+                throw;
+            }
+
+        }
         #endregion
 
         #region 删除功能
+        /// <summary>
+        /// 删除任务功能
+        /// 先删除当前线程中的任务，然后再删除数据库表中的任务状态
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Delete(object sender , CommandEventArgs e)
         {
-
             try
             {
-
                 string missionid = e.CommandArgument.ToString();
+                Model.TimerMission model = _bll.GetModel(new Guid(missionid));
+                //删除正在执行的任务
+                _missionControl.DeleteJob(model.GroupName , model.MissionName);
+                //更改存储在数据库中当前的任务状态ISDel=1
                 bool isdel = _bll.Delete(new Guid(missionid));
                 int count = Convert.ToInt32(countDDL.SelectedValue);
-                UIHelper.Alert(this , isdel ? "删除成功" : "删除失败");
+                UiHelper.Alert(this , isdel ? "删除成功" : "删除失败");
                 NewDatabind(count);
             }
             catch(Exception)
             {
-                UIHelper.Alert(this , "未知错误");
+                UiHelper.Alert(this , "未知错误");
+                throw;
             }
+
         }
         #endregion
 
@@ -561,25 +612,32 @@ namespace TimerManage
             {
                 string missionid = txtHiddenText.Text;
                 Model.TimerMission model = _bll.GetModel(new Guid(missionid));
-                if(model == null) throw new ArgumentNullException("sender");
-                bool issuccess = _missionControl.AddSqlExecuteJob(model.SqlStr , Convert.ToDateTime(model.StartTime) , Convert.ToDateTime(model.EndTime) , model.GroupName , model.MissionName , model.TimeCorn);
-                if(issuccess)
+                if(model != null)
                 {
-                    UIHelper.Alert(this , "任务运行成功！");
-                    model.MissionState = 1;
-                    _bll.Update(model);//更新数据
+                    //添加任务操作
+                    bool issuccess = _missionControl.AddSqlExecuteJob(model.SqlStr , Convert.ToDateTime(model.StartTime) ,
+                        Convert.ToDateTime(model.EndTime) , model.GroupName , model.MissionName , model.TimeCorn);
+                    if(issuccess)
+                    {
+                        UiHelper.Alert(this , "任务运行成功！");
+                        model.MissionState = 1;
+                        _bll.Update(model); //更新数据
+                    }
+                    else
+                    {
+                        UiHelper.Alert(this , "操作失败，请重试！");
+                    }
 
+                    NewDatabind(Convert.ToInt32(countDDL.SelectedValue));
                 }
                 else
                 {
-                    UIHelper.Alert(this , "操作失败，请重试！");
+                    throw new ArgumentNullException("sender");
                 }
-
-                NewDatabind(Convert.ToInt32(countDDL.SelectedValue));
             }
             catch
             {
-                UIHelper.Alert(this , "操作失败，请重试！");
+                UiHelper.Alert(this , "操作失败，请重试！");
                 throw;
             }
         }
@@ -598,21 +656,21 @@ namespace TimerManage
                 bool issuccess = _missionControl.PauseJob(model.GroupName , model.MissionName);
                 if(issuccess)
                 {
-                    UIHelper.Alert(this , "任务已暂停！");
+                    UiHelper.Alert(this , "任务已暂停！");
                     model.MissionState = 3;
                     _bll.Update(model);//更新数据
 
                 }
                 else
                 {
-                    UIHelper.Alert(this , "操作失败，请重试！");
+                    UiHelper.Alert(this , "操作失败，请重试！");
                 }
 
                 NewDatabind(Convert.ToInt32(countDDL.SelectedValue));
             }
             catch(Exception)
             {
-                UIHelper.Alert(this , "操作失败，请重试！");
+                UiHelper.Alert(this , "操作失败，请重试！");
                 throw;
             }
         }
@@ -631,22 +689,21 @@ namespace TimerManage
                 bool issuccess = _missionControl.ReStart(model.GroupName , model.MissionName);
                 if(issuccess)
                 {
-                    UIHelper.Alert(this , "任务重启成功！");
+                    UiHelper.Alert(this , "任务重启成功！");
                     model.MissionState = 1;
-
                     _bll.Update(model); //更新数据
 
                 }
                 else
                 {
-                    UIHelper.Alert(this , "操作失败，请重试！");
+                    UiHelper.Alert(this , "操作失败，请重试！");
                 }
 
                 NewDatabind(Convert.ToInt32(countDDL.SelectedValue));
             }
             catch(Exception)
             {
-                UIHelper.Alert(this , "操作失败，请重试！");
+                UiHelper.Alert(this , "操作失败，请重试！");
                 throw;
             }
         }
@@ -663,32 +720,28 @@ namespace TimerManage
                 string missionid = txtHiddenText.Text;
                 Model.TimerMission model = _bll.GetModel(new Guid(missionid));
                 bool issuccess = _missionControl.DeleteJob(model.GroupName , model.MissionName);
-                UIHelper.Alert(this , issuccess ? "任务已停止！" : "操作失败，请重试！");
+                UiHelper.Alert(this , issuccess ? "任务已停止！" : "操作失败，请重试！");
                 if(issuccess)
                 {
-                    UIHelper.Alert(this , "任务已停止！");
+                    UiHelper.Alert(this , "任务已停止！");
                     model.MissionState = 4;
                     _bll.Update(model);//更新数据
-
                 }
                 else
                 {
-                    UIHelper.Alert(this , "操作失败，请重试！");
+                    UiHelper.Alert(this , "操作失败，请重试！");
                 }
 
                 NewDatabind(Convert.ToInt32(countDDL.SelectedValue));
             }
             catch(Exception)
             {
-                UIHelper.Alert(this , "操作失败，请重试！");
-
-                //抛出
+                UiHelper.Alert(this , "操作失败，请重试！");
                 throw;
             }
         }
+
         #endregion
-
-
 
     }
 }

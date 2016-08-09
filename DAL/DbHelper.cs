@@ -10,13 +10,13 @@ namespace  DAL
     /// 数据访问类，可用于访问不同数据库
     /// Copyright (C) Maticsoft
     /// </summary>
-    public class DbHelper
+    public static class DbHelper
     {
         //数据库连接字符串(web.config来配置)，可以动态更改connectionString支持多数据库.	
-        public static string connectionString =
+        private static string connectionString =
             "Data Source=CST-ESQL8601\\SQL2008R2;Initial Catalog=TjCopMaintain;User ID=Debugger;Password=CST123456";
-        
-        public static SqlConnection GetConnection()
+
+        private static SqlConnection GetConnection()
         {
             SqlConnection conn = new SqlConnection(connectionString);
             if (conn.State != ConnectionState.Open)

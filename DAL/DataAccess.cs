@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL
 {
@@ -24,8 +20,6 @@ namespace DAL
         {
             return DbHelper.ExecuteSql(sql) > 0;
         }
-
-
 
         /// <summary>
         /// 数据库翻页获得数据

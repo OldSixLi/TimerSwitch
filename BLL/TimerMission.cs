@@ -10,27 +10,20 @@ namespace BLL
 	/// </summary>
 	public partial class TimerMission
 	{
-        private readonly  DAL.TimerMission dal = new  DAL.TimerMission();
+        private readonly  DAL.TimerMission _dal = new  DAL.TimerMission();
 		public TimerMission()
 		{}
 
         ///设置当前的备注信息
 
 		#region  BasicMethod
-		/// <summary>
-		/// 是否存在该记录
-		/// </summary>
-		public bool Exists(Guid ID)
-		{
-			return dal.Exists(ID);
-		}
-
+		
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
         public int Add(Model.TimerMission model)
 		{
-			return dal.Add(model);
+			return _dal.Add(model);
 		}
 
 		/// <summary>
@@ -38,16 +31,16 @@ namespace BLL
 		/// </summary>
 		public bool Update(Model.TimerMission model)
 		{
-			return dal.Update(model);
+			return _dal.Update(model);
 		}
 
 		/// <summary>
 		/// 删除一条数据
 		/// </summary>
-		public bool Delete(Guid ID)
+		public bool Delete(Guid id)
 		{
 			
-			return dal.Delete(ID);
+			return _dal.Delete(id);
 		}
 		 
 
@@ -57,32 +50,9 @@ namespace BLL
 		public Model.TimerMission GetModel(Guid ID)
 		{
 			
-			return dal.GetModel(ID);
+			return _dal.GetModel(ID);
 		}
-         
-		/// <summary>
-		/// 获得数据列表
-		/// </summary>
-		public List<Model.TimerMission> DataTableToList(DataTable dt)
-		{
-			List<Model.TimerMission> modelList = new List<Model.TimerMission>();
-			int rowsCount = dt.Rows.Count;
-			if (rowsCount > 0)
-			{
-				Model.TimerMission model;
-				for (int n = 0; n < rowsCount; n++)
-				{
-					model = dal.DataRowToModel(dt.Rows[n]);
-					if (model != null)
-					{
-						modelList.Add(model);
-					}
-				}
-			}
-			return modelList;
-		}
-
-	
+        
 	    #endregion  BasicMethod
 
 	    #region  ExtensionMethod
@@ -95,12 +65,12 @@ namespace BLL
         /// <returns></returns>
 	    public bool  TestRepeat(string missionName , string groupname,string  id )
 	    {
-	        return dal.TestRepeat(missionName, groupname,id);
+	        return _dal.TestRepeat(missionName, groupname,id);
 	    }
 
 	    public bool TestRepeat(string missionName, string groupname)
 	    {
-            return dal.TestRepeat(missionName , groupname);
+            return _dal.TestRepeat(missionName , groupname);
 	    }
 		#endregion  ExtensionMethod
 	}

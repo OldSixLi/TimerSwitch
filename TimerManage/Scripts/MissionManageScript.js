@@ -38,8 +38,6 @@ $(function ()
                     $(".detail_missionstate").html(json.StateString);
                     var statenum = json.MissionState;
                     $('.mission_operate a').removeClass('disabled');
-
-
                     $('.missionstate' + statenum).addClass('disabled');
                     var xianshi = setTimeout(function ()
                     {
@@ -83,14 +81,10 @@ $(function ()
                     $("#txtEditMissionStartTime").val(renderTime(json.StartTime));
                     $("#txtEditMissionEndTime").val(renderTime(json.EndTime));
                     $("#txtEditMissionExplain").val(json.MissionExplain);
-                    //var statenum = json.MissionState;
-                    //$('.mission_operate a').removeClass('disabled');
-
-                    //$('.missionstate' + statenum).addClass('disabled');
                     var xianshi = setTimeout(function ()
                     {
                         $('.overridediv').css('display', 'none');
-                    }, 200000);
+                    }, 2000);
 
                 } else
                 {
@@ -165,7 +159,6 @@ function renderTime(date)
 {
     var da = new Date(parseInt(date.replace("/Date(", "").replace(")/", "").split("+")[0]));
     var month = "", dates = "", hours = "", minutes = "", seconds = "";
-
     month = (da.getMonth() + 1) < 10 ? "0" + (da.getMonth() + 1) : da.getMonth() + 1;
     hours = da.getHours() < 10 ? "0" + da.getHours() : da.getHours();
     seconds = da.getSeconds() < 10 ? "0" + da.getSeconds() : da.getSeconds();

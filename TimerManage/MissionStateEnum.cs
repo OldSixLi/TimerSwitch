@@ -1,4 +1,4 @@
-﻿
+﻿//任务状态枚举类
 using CST.ProjectFramework.Common.Attribute;
 
 namespace TimerManage

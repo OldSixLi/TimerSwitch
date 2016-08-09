@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Control.aspx.cs" Inherits="TimerManage.Control" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ControlDemo.aspx.cs" Inherits="TimerManage.Control" %>
 
 <!DOCTYPE html>
 

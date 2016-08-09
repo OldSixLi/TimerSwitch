@@ -29,8 +29,6 @@ namespace Model
         private DateTime? _starttime;
         private DateTime? _endtime;
         private DateTime? _createtime;
-
-
         private string _starttimeStr;
         private string _endtimeStr;
         private string _missionexplain;

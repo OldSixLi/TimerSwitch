@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿//通用的弹框提示类
+using System;
 using System.Web.UI;
 
 namespace TimerManage
 {
-    public class UIHelper
+    public class UiHelper
     {
         public static void Alert(System.Web.UI.Page page, string msg)//弹出提示框
         {
@@ -36,7 +34,7 @@ namespace TimerManage
         /// </summary>
         /// <param name="page">当前页</param>
         /// <param name="url">跳转页面</param>
-        public static void UIRedirect(System.Web.UI.Page page,  string url)//弹出提示框
+        public static void UiRedirect(System.Web.UI.Page page,  string url)//弹出提示框
         {
 
             string randomstr = Guid.NewGuid().ToString().Substring(0, 8);
@@ -62,10 +60,10 @@ namespace TimerManage
         public string GetUniqueCode()
         {
             string date = DateTime.Now.ToString("yyyyMMddHHmmss");
-            string uniqueCode = date + getNumRandom(5);
+            string uniqueCode = date + GetNumRandom(5);
             return uniqueCode;
         }
-        public string getNumRandom(int count)
+        public string GetNumRandom(int count)
         {
             Random rd = new Random();
             string str = string.Empty;

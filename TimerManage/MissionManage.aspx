@@ -4,25 +4,16 @@
 <%@ Import Namespace="TimerManage" %>
 
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
     <title>任务管理</title>
     <link href="style/bootstrap.css" rel="stylesheet" />
     <link href="style/MissionManageStyle.css" rel="stylesheet" />
     <link href="style/jquery.datetimepicker.css" rel="stylesheet" />
-    <script src="Scripts/jquery-1.11.1.min.js"></script>
-    <script src="Scripts/bootstrap.min.js"></script>
-    <script src="Scripts/jquery.datetimepicker.full.min.js"></script>
-    <script src="Scripts/MissionManageScript.min.js"></script>
-    
 </head>
 <body>
     <form id="form1" runat="server">
-
-
         <%--查看任务详细信息模态框--%>
         <div class="fade modal" id="missionDetail" data-backdrop="static">
             <div class="modal-dialog">
@@ -129,7 +120,6 @@
                 </div>
             </div>
         </div>
-
         <%--添加任务模态框--%>
         <div class="modal fade" data-backdrop="static" id="RegistModal" tabindex="-1">
             <div class="modal-dialog">
@@ -220,8 +210,6 @@
                 </div>
             </div>
         </div>
-
-
         <%--编辑任务模态框--%>
         <div class="modal fade" id="missionEditModal" data-backdrop="static">
             <div class="modal-dialog">
@@ -306,13 +294,12 @@
 
 
                         <a class="btn  btn-info" id="A1" runat="server" onserverclick="btnMissionEdit_Click">修改任务　</a>
-                        <a id="A2" class="btn btn-primary" onserverclick="btnMissionBeginNow_Click" runat="server">修改并执行</a>
+                        <a id="A2" class="btn btn-primary" onserverclick="btnEditMissionBeginNow_Click" runat="server">修改并执行</a>
                     </div>
 
                 </div>
             </div>
         </div>
-
         <%--页面主体--%>
         <div class="row">
             <div class="col-lg-10 col-lg-offset-1 ">
@@ -321,8 +308,6 @@
                         <div class="col-lg-6 ">
                             <h2>定时任务管理</h2>
                         </div>
-
-
                     </div>
                     <%--检索项--%>
                     <div id="biao" class="panel-body">
@@ -460,7 +445,7 @@
                                                     </td>
                                                     <td class="text-center time"><%#Eval(" CreateTime") %></td>
                                                     <td class="text-center "><a class="no-padding a_editdetail" data-toggle="modal" data-target="#missionEditModal" data-missionid="<%#Eval("Id") %>" class="a_getdetail" title="修改任务信息"><span class="glyphicon glyphicon-pencil"></span></a>
-                                                        <asp:LinkButton ID="LinkButtonDelete" title="删除任务信息" runat="server" CommandArgument='<%#Eval("ID") %>'
+                                                        <asp:LinkButton ID="LinkButtonDelete" title="删除任务信息" runat="server" CommandArgument='<%#Eval("id") %>'
                                                             OnCommand="Delete" OnClientClick='<%#  "if (!confirm(\"你确定要删除任务：" + Eval("MissionName").ToString() + "吗?\")) return false;"%>'>
                                                         <span class="glyphicon glyphicon-trash"></span>
                                                         </asp:LinkButton>
@@ -512,12 +497,12 @@
                 </div>
             </div>
         </div>
-        <%--用来存储隐藏的任务ID--%>
+        <%--用来存储隐藏的任务id--%>
         <asp:TextBox ID="txtHiddenText" runat="server" class="hidden"></asp:TextBox>
-
-
-
-
     </form>
+    <script src="Scripts/jquery-1.11.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/jquery.datetimepicker.full.min.js"></script>
+    <script src="Scripts/MissionManageScript.min.js"></script>
 </body>
 </html>

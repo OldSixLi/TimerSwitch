@@ -26,7 +26,7 @@ namespace TimerManage
             bool issuccess = _control.AddSqlExecuteJob(sqlstr , DateTime.Now.AddSeconds(1) , DateTime.Now.AddSeconds(1000) , "group1" , "mission2" , 100 , 1);
             if(issuccess)
             {
-                UIHelper.Alert(this , "添加成功！");
+                UiHelper.Alert(this , "添加成功！");
             }
         }
 
