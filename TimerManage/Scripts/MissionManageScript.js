@@ -2,7 +2,7 @@
 $(function ()
 {
     //初始化时间控件
-    $('.start_end_time').datetimepicker();
+    $(".start_end_time").datetimepicker();
 
     //初始化悬浮气泡控件
     $("[data-toggle='tooltip']").tooltip();
@@ -11,17 +11,17 @@ $(function ()
     $(".a_getdetail").click(function ()
     {
         var id = $(this).attr("data-missionid");
+        //将当前任务的主键存于隐藏域中
         $("#txtHiddenText").val(id);
         var path = "Ajax/GetMissionDetail.ashx?missionid=" + id;
-        //alert(path);
-        //开始执行异步操作
+        //开始执行数据请求
         $.ajax({
             url: path,
             beforeSend: function ()
             {
-                $('.overridediv').css('display', 'block');
+                $(".overridediv").css("display", "block");
             },
-            datatype: 'json',
+            datatype: "json",
             success: function (jsons)
             {
                 if (jsons)
@@ -37,16 +37,16 @@ $(function ()
                     $(".detail_missionexplain").html(json.MissionExplain);
                     $(".detail_missionstate").html(json.StateString);
                     var statenum = json.MissionState;
-                    $('.mission_operate a').removeClass('disabled');
-                    $('.missionstate' + statenum).addClass('disabled');
+                    $(".mission_operate a").removeClass("disabled");
+                    $(".missionstate" + statenum).addClass("disabled");
                     var xianshi = setTimeout(function ()
                     {
-                        $('.overridediv').css('display', 'none');
-                    }, 2000);
+                        $(".overridediv").css("display", "none");
+                    }, 2000);//模态框延迟显示2s
 
                 } else
                 {
-                    $(".missionid_json").html('未知错误，数据无法显示！');
+                    $(".missionid_json").html("未知错误，数据无法显示！");
                 }
 
             }
@@ -65,9 +65,9 @@ $(function ()
             url: path,
             beforeSend: function ()
             {
-                $('.overridediv').css('display', 'block');
+                $(".overridediv").css("display", "block");
             },
-            datatype: 'json',
+            datatype: "json",
             success: function (jsons)
             {
                 if (jsons)
@@ -83,12 +83,12 @@ $(function ()
                     $("#txtEditMissionExplain").val(json.MissionExplain);
                     var xianshi = setTimeout(function ()
                     {
-                        $('.overridediv').css('display', 'none');
-                    }, 2000);
+                        $(".overridediv").css("display", "none");
+                    }, 2000);//模态框延迟显示2s
 
                 } else
                 {
-                    $(".missionid_json").html('未知错误，数据无法显示！');
+                    $(".missionid_json").html("未知错误，数据无法显示！");
                 }
 
             }
@@ -103,23 +103,23 @@ $(function ()
     $("thead .headsql,.headgoodsname,.headusername,.headorder,.headtimes,.headstates").click(function ()
     {
         //  点击列表的表头进行排序
-        $(this).parent().find('span').removeClass();//删除所有图标
-        $(this).find('span').addClass('glyphicon');//仅为当前项目添加图标
+        $(this).parent().find("span").removeClass();//删除所有图标
+        $(this).find("span").addClass("glyphicon");//仅为当前项目添加图标
 
         //添加正序或倒序图标
         if (!isdesc)
         {
             isdesc = true;
-            $(this).find('span').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up').attr("title", "升序");
+            $(this).find("span").removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-up").attr("title", "升序");
         } else
         {
             isdesc = false;
-            $(this).find('span').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down').attr("title", "降序");
+            $(this).find("span").removeClass("glyphicon-chevron-up").addClass("glyphicon-chevron-down").attr("title", "降序");
         }
-        var trlength = $('.fixed-table-container tr').length - 2;
+        var trlength = $(".fixed-table-container tr").length - 2;
         var colunindex = $(this).index();//当前TH的序号
         //获取需要进行比对的数据行（去除表头和最后一行）
-        var tablearr = $.makeArray($('tbody tr:lt(' + trlength + ')'));
+        var tablearr = $.makeArray($("tbody tr:lt(" + trlength + ")"));
 
         //排序规则三种：1、时间；2、字符串；3、数字
         if ($(this).attr("data-type") === "time")
@@ -142,15 +142,15 @@ $(function ()
         {
             tablearr.sort(function (a, b)
             {
-                var avalue = parseInt($(a).find('td').eq(colunindex).text());
-                var bvalue = parseInt($(b).find('td').eq(colunindex).text());
+                var avalue = parseInt($(a).find("td").eq(colunindex).text());
+                var bvalue = parseInt($(b).find("td").eq(colunindex).text());
                 return isdesc ? avalue - bvalue : bvalue - avalue;
             });
 
         }
         //重新添加到页面中
         var tbody = $("<tbody></tbody>").append($(tablearr));
-        $('tbody').prepend($(tbody).html());
+        $("tbody").prepend($(tbody).html());
     });
 });
 
@@ -172,5 +172,5 @@ function renderTime(date)
 //时间比较函数（直接提取数字进行比较）
 function timescompare(a, b)
 {
-    return a.replace(/[^0-9]+/g, '') - b.replace(/[^0-9]+/g, '');
+    return a.replace(/[^0-9]+/g, "") - b.replace(/[^0-9]+/g, "");
 }

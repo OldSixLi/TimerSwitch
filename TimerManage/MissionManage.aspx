@@ -9,11 +9,14 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>任务管理</title>
     <link href="style/bootstrap.css" rel="stylesheet" />
+    <%--个人样式--%>
     <link href="style/MissionManageStyle.css" rel="stylesheet" />
+    <%--时间控件样式--%>
     <link href="style/jquery.datetimepicker.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">
+    
         <%--查看任务详细信息模态框--%>
         <div class="fade modal" id="missionDetail" data-backdrop="static">
             <div class="modal-dialog">
@@ -300,6 +303,7 @@
                 </div>
             </div>
         </div>
+
         <%--页面主体--%>
         <div class="row">
             <div class="col-lg-10 col-lg-offset-1 ">
@@ -500,6 +504,8 @@
         <%--用来存储隐藏的任务id--%>
         <asp:TextBox ID="txtHiddenText" runat="server" class="hidden"></asp:TextBox>
     </form>
+
+    <%--引入JS--%>
     <script src="Scripts/jquery-1.11.1.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
     <script src="Scripts/jquery.datetimepicker.full.min.js"></script>
