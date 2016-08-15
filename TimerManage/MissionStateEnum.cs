@@ -5,28 +5,28 @@ namespace TimerManage
 {
     public enum MissionStateEnum
     { /// <summary>
-        /// 正局级
+        /// 任务状态：运行中
         /// </summary>
         [EnumDescription("show" , " <i  class='glyphicon glyphicon-ok-sign'></i>运行中 ")]
-        ZhengJu = 1 ,
+        YunXingZhong = 1 ,
 
         /// <summary>
-        /// 副局级
+        /// 任务状态：未运行
         /// </summary>
         [EnumDescription("show" , "<i  class='glyphicon glyphicon-time'></i>未运行 ")]
-        Fuju = 2 ,
+        WeiYunXing = 2 ,
 
         /// <summary>
-        /// 正处级
+        /// 任务状态：暂停
         /// </summary>
         [EnumDescription("show" , "<i  class='glyphicon glyphicon-pause'></i>暂停 ")]
-        ZHengChu = 3 ,
+        ZanTing = 3 ,
 
         /// <summary>
-        /// 副处级
+        /// 任务状态：已停止
         /// </summary>
         [EnumDescription("show" , "  <i  class='glyphicon glyphicon-exclamation-sign'></i>已停止")]
-        FuChu = 4 ,
+        YiTingZhi = 4 ,
     }
 
 }

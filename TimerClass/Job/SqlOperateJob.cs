@@ -6,14 +6,14 @@
 ***********************************************************************/
 using System;
 using Quartz;
-using  DAL;
+using DAL;
 
 namespace TimerClass.Job
 {
     /// <summary>
     /// 自定义的数据库操作
     /// </summary>
-    public  class SqlOperateJob :IJob
+    public class SqlOperateJob :IJob
     {
         private readonly DataAccess _dal = new DataAccess();
 
@@ -28,8 +28,6 @@ namespace TimerClass.Job
             {
                 Console.WriteLine("插入数据成功" + "，当前时间 "
                     + DateTime.Now.ToString("F") + ":自定义语句操作Success！");
-
-
             }
 
         }

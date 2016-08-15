@@ -200,9 +200,7 @@ namespace TimerManage
                 throw;
             }
         }
-
-
-
+        
         /// <summary>
         /// TimerMission表数据添加
         /// </summary>
@@ -325,8 +323,8 @@ namespace TimerManage
         /// <param name="e"></param>
         protected void btnMissionEdit_Click(object sender , EventArgs e)
         {
-
             string edit = EditTimerMission();
+            UiHelper.Alert(this , edit != "" ? "修改任务成功，当前任务状态恢复为未执行状态！" : "修改任务失败，请校验数据后重试！");
         }
 
         /// <summary>
@@ -401,7 +399,6 @@ namespace TimerManage
                     model.MissionState = 2;//默认设置当前的MissionState为空
                     //数据添加
                     bool issuccess = _bll.Update(model);
-                    UiHelper.Alert(this , issuccess ? "修改任务成功，当前任务状态恢复为未执行状态！" : "数据添加失败，请校验数据后重试！");
                     if(issuccess)
                     {
                         //重新进行数据绑定
@@ -411,8 +408,6 @@ namespace TimerManage
                         foreach(TextBox tbx in this.form1.Controls.OfType<TextBox>()) { if(tbx != null) tbx.Text = ""; }
                     }
                     return issuccess ? model.ID.ToString() : "";
-
-
                 }
             }
             catch
@@ -432,23 +427,25 @@ namespace TimerManage
         {
             try
             {
+                //获取当前修改的任务的主键
                 string missionid = EditTimerMission();
                 if(missionid != "")
                 {
+                    //当前的任务模型
                     Model.TimerMission model = _bll.GetModel(new Guid(missionid));
+                    //删除线程中的任务
                     _missionControl.DeleteJob(model.GroupName , model.MissionName);
-                    bool issuccess = _missionControl.AddSqlExecuteJob(model.SqlStr , Convert.ToDateTime(model.StartTime) ,
-                        Convert.ToDateTime(model.EndTime) , model.GroupName , model.MissionName , model.TimeCorn);
+                    bool issuccess = _missionControl.AddSqlExecuteJob(model.SqlStr , Convert.ToDateTime(model.StartTime) , Convert.ToDateTime(model.EndTime) , model.GroupName , model.MissionName , model.TimeCorn);
                     if(issuccess)
                     {
-                        UiHelper.Alert(this , "修改任务成功，当前任务已开启！");
+                        UiHelper.Alert(this , "修改任务成功，当前任务已开始运行！");
                         model.MissionState = 1;
                         _bll.Update(model); //更新数据
+                        NewDatabind(Convert.ToInt32(countDDL.SelectedValue)); //重新绑定数据
                     }
                     else
                     {
                         UiHelper.Alert(this , "操作失败，请重试！");
-
                     }
                 }
                 else
@@ -479,17 +476,16 @@ namespace TimerManage
             {
                 string missionid = e.CommandArgument.ToString();
                 Model.TimerMission model = _bll.GetModel(new Guid(missionid));
-                //删除正在执行的任务
+                //删除线程中的任务
                 _missionControl.DeleteJob(model.GroupName , model.MissionName);
                 //更改存储在数据库中当前的任务状态ISDel=1
                 bool isdel = _bll.Delete(new Guid(missionid));
-                int count = Convert.ToInt32(countDDL.SelectedValue);
                 UiHelper.Alert(this , isdel ? "删除成功" : "删除失败");
-                NewDatabind(count);
+                NewDatabind(Convert.ToInt32(countDDL.SelectedValue));
             }
             catch(Exception)
             {
-                UiHelper.Alert(this , "未知错误");
+                UiHelper.Alert(this , "删除失败，未知错误");
                 throw;
             }
 
@@ -503,20 +499,30 @@ namespace TimerManage
             int totalpage = 0;
             int index = Convert.ToInt32(Webpageindex);
             int totalrecord = 0;
-            Model.TimerMission model = new Model.TimerMission();
-            model.MissionName = txtMissionName.Text.Trim();
-            model.GroupName = txtGroupName.Text.Trim();
-            model.MissionState = Convert.ToInt32(ddlState.SelectedValue);
-            if(txtStartTime.Text.Trim() != "") { model.StartTime = Convert.ToDateTime(txtStartTime.Text.Trim()); }
+            Model.TimerMission model = new Model.TimerMission {
+                //任务名称（模糊搜索）
+                MissionName = txtMissionName.Text.Trim() ,
+                //任务所在组名称（模糊搜索）
+                GroupName = txtGroupName.Text.Trim() ,
+                //要检索的任务状态
+                MissionState = Convert.ToInt32(ddlState.SelectedValue)
+            };
+            if(txtStartTime.Text.Trim() != "")
+            {
+                //任务开始执行事件
+                model.StartTime = Convert.ToDateTime(txtStartTime.Text.Trim());
+            }
             if(txtEndTime.Text.Trim() != "")
             {
+                //任务结束时间
                 model.EndTime = Convert.ToDateTime(txtEndTime.Text.Trim());
             }
-
-            DataTable dt = new BLL.Bizlog().GetAllData(model , "createtime" , 1 , count , Convert.ToInt32(Webpageindex) , ref totalpage , ref  index , ref totalrecord);
+            //分页获取数据方法
+            DataTable dt = new Bizlog().GetAllData(model , "createtime" , 1 , count , Convert.ToInt32(Webpageindex) , ref totalpage , ref  index , ref totalrecord);
 
             if(dt != null)
             {
+                //要显示出来的数据进行处理
                 dt.Columns.Add("StateString" , typeof(string));
                 foreach(DataRow dr in dt.Rows)
                 {
@@ -524,8 +530,9 @@ namespace TimerManage
                     {
                         dr["SqlStr"] = dr["SqlStr"].ToString().Replace("\"" , "'");
                         string state = dr["MissionState"].ToString();
+                        //获取任务状态的中文名称（当前的任务名称中包含了HTML的图标代码）
                         dr["StateString"] = EnumDescriptionExtension.GetDescription(typeof(MissionStateEnum) , state , "show");
-                        dr["TimeCorn"] = dr["TimeCorn"].ToString().Trim();
+                        dr["TimeCorn"] = dr["TimeCorn"].ToString().Trim();//去除空白
                     }
                     catch(Exception)
                     {
@@ -536,13 +543,14 @@ namespace TimerManage
                 }
 
                 if(totalpage < index)
-                {
+                {//如果当前页面比总页面的数值大，则默认设置当前页为总页数最后一页
                     Webpageindex = index;
                 }
 
             }
             WebPageCount = totalpage;
             Webpagerecord = totalrecord;
+            //当前Repeater控件数据绑定
             Repeatergoods.DataSource = dt;
             Repeatergoods.DataBind();
 
@@ -552,7 +560,7 @@ namespace TimerManage
         #region 选择每页显示数据（下拉菜单）
         protected void countDDL_SelectedIndexChanged(object sender , EventArgs e)
         {
-            int count = Convert.ToInt32(countDDL.SelectedValue);
+            int count = Convert.ToInt32(countDDL.SelectedValue);//获取下拉菜单中的选择值
             NewDatabind(count);
         }
         #endregion
@@ -603,6 +611,7 @@ namespace TimerManage
 
         /// <summary>
         /// 任务添加
+        /// 先将当前的任务添加到进程中、然后更新任务表中的状态为1（运行状态）
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -615,13 +624,13 @@ namespace TimerManage
                 if(model != null)
                 {
                     //添加任务操作
-                    bool issuccess = _missionControl.AddSqlExecuteJob(model.SqlStr , Convert.ToDateTime(model.StartTime) ,
-                        Convert.ToDateTime(model.EndTime) , model.GroupName , model.MissionName , model.TimeCorn);
+                    bool issuccess = _missionControl.AddSqlExecuteJob(model.SqlStr , Convert.ToDateTime(model.StartTime) , Convert.ToDateTime(model.EndTime) , model.GroupName , model.MissionName , model.TimeCorn);
                     if(issuccess)
                     {
                         UiHelper.Alert(this , "任务运行成功！");
-                        model.MissionState = 1;
-                        _bll.Update(model); //更新数据
+                        model.MissionState = MissionStateEnum.YunXingZhong.GetEnumValueEx();
+                        //将任务添加到进程以后，更新在当前数据库中的任务状态
+                        _bll.Update(model);
                     }
                     else
                     {
@@ -644,6 +653,7 @@ namespace TimerManage
 
         /// <summary>
         /// 任务暂停
+        /// 先暂停当前线程中的任务，然后更新当前的任务状态为3（暂停状态）
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -653,11 +663,12 @@ namespace TimerManage
             {
                 string missionid = txtHiddenText.Text;
                 Model.TimerMission model = _bll.GetModel(new Guid(missionid));
+                //任务暂停操作方法
                 bool issuccess = _missionControl.PauseJob(model.GroupName , model.MissionName);
                 if(issuccess)
                 {
                     UiHelper.Alert(this , "任务已暂停！");
-                    model.MissionState = 3;
+                    model.MissionState = MissionStateEnum.ZanTing.GetEnumValueEx();
                     _bll.Update(model);//更新数据
 
                 }
@@ -665,7 +676,7 @@ namespace TimerManage
                 {
                     UiHelper.Alert(this , "操作失败，请重试！");
                 }
-
+                //重新进行数据绑定
                 NewDatabind(Convert.ToInt32(countDDL.SelectedValue));
             }
             catch(Exception)
@@ -677,6 +688,7 @@ namespace TimerManage
 
         /// <summary>
         /// 任务重启
+        /// 将任务重启，并更新当前的任务状态为1
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -690,7 +702,7 @@ namespace TimerManage
                 if(issuccess)
                 {
                     UiHelper.Alert(this , "任务重启成功！");
-                    model.MissionState = 1;
+                    model.MissionState = MissionStateEnum.YunXingZhong.GetEnumValueEx();
                     _bll.Update(model); //更新数据
 
                 }
@@ -710,6 +722,7 @@ namespace TimerManage
 
         /// <summary>
         /// 任务停止（删除Job）
+        /// 先将当前线程中任务删除，然后更新任务表中的状态为4（停止状态）
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -719,12 +732,13 @@ namespace TimerManage
             {
                 string missionid = txtHiddenText.Text;
                 Model.TimerMission model = _bll.GetModel(new Guid(missionid));
+                //删除任务
                 bool issuccess = _missionControl.DeleteJob(model.GroupName , model.MissionName);
                 UiHelper.Alert(this , issuccess ? "任务已停止！" : "操作失败，请重试！");
                 if(issuccess)
                 {
                     UiHelper.Alert(this , "任务已停止！");
-                    model.MissionState = 4;
+                    model.MissionState = MissionStateEnum.YiTingZhi.GetEnumValueEx();
                     _bll.Update(model);//更新数据
                 }
                 else

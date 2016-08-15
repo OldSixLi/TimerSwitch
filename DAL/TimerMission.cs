@@ -37,7 +37,7 @@ namespace DAL
 					new SqlParameter("@MissionExplain", SqlDbType.NVarChar,-1),
 					new SqlParameter("@MissionState", SqlDbType.Int,4),
 					new SqlParameter("@IsDel", SqlDbType.Int,4)};
-            parameters[0].Value = Guid.NewGuid();
+            parameters[0].Value =model.ID;
             parameters[1].Value = model.MissionName;
             parameters[2].Value = model.GroupName;
             parameters[3].Value = model.SqlStr;
